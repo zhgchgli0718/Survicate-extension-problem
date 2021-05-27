@@ -1,0 +1,11 @@
+framework module Survicate {
+  umbrella header "Survicate.h"
+
+  export *
+  module * { export * }
+}
+
+module Survicate.Swift {
+    header "Survicate-Swift.h"
+    requires objc
+}
