@@ -1,9 +1,8 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.4 (swiftlang-1205.0.26.9 clang-1205.0.19.55)
+// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
 // swift-module-flags: -target i386-apple-ios10.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name Survicate
 import CoreData
 import Foundation
-@_exported import Survicate
 import Swift
 import UIKit
 @objc public enum LogLevel : Swift.Int, Swift.CustomStringConvertible, Swift.Comparable {
@@ -18,8 +17,8 @@ import UIKit
   public static func <= (lhs: Survicate.LogLevel, rhs: Survicate.LogLevel) -> Swift.Bool
   public static func >= (lhs: Survicate.LogLevel, rhs: Survicate.LogLevel) -> Swift.Bool
   public static func > (lhs: Survicate.LogLevel, rhs: Survicate.LogLevel) -> Swift.Bool
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
     get
   }
@@ -29,15 +28,15 @@ import UIKit
   @objc final public var id: Foundation.NSNumber?
   @objc final public var ids: [Foundation.NSNumber]?
   @objc final public var value: Swift.String?
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 extension SurvicateAnswer {
   @objc override final public var description: Swift.String {
     @objc get
   }
 }
-@objc public protocol SurvicateDelegate {
+@objc public protocol SurvicateDelegate : AnyObject {
   @objc optional func surveyDisplayed(surveyId: Swift.String)
   @objc optional func questionAnswered(surveyId: Swift.String, questionId: Swift.Int, answer: Survicate.SurvicateAnswer)
   @objc optional func surveyCompleted(surveyId: Swift.String)
@@ -46,8 +45,8 @@ extension SurvicateAnswer {
 public struct UserTrait : Swift.Codable, Swift.Equatable {
   public init(withName name: Swift.String, value: Swift.String)
   public static func == (lhs: Survicate.UserTrait, rhs: Survicate.UserTrait) -> Swift.Bool
-  public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
 }
 extension UserTrait : Swift.CustomStringConvertible {
   public var description: Swift.String {
@@ -83,7 +82,7 @@ extension KeyedDecodingContainer {
   public func decode(_ type: Swift.String.Type, forKey key: Swift.KeyedDecodingContainer<K>.Key) throws -> Swift.String
 }
 prefix operator ^
-@_inheritsConvenienceInitializers @objc final public class Survicate : ObjectiveC.NSObject {
+@objc @_inheritsConvenienceInitializers final public class Survicate : ObjectiveC.NSObject {
   @objc public static var shared: Survicate.Survicate
   @objc weak final public var delegate: Survicate.SurvicateDelegate? {
     @objc get
@@ -100,6 +99,6 @@ prefix operator ^
   @objc final public func leaveScreen(value: Swift.String)
   @objc final public func invokeEvent(name: Swift.String)
   @objc final public func reset()
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }

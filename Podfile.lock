@@ -1,5 +1,5 @@
 PODS:
-  - Survicate (1.4.5)
+  - Survicate (1.5.0)
 
 DEPENDENCIES:
   - Survicate
@@ -9,7 +9,7 @@ SPEC REPOS:
     - Survicate
 
 SPEC CHECKSUMS:
-  Survicate: d92625be5e772ec4540aeb6f569e2290fe952763
+  Survicate: 1d84bdb57f783d373cc5eb7285b9ee4c3da7e9dd
 
 PODFILE CHECKSUM: 9993d3f91087dbb90c2e5a18ebfd432b8407978b
 
